@@ -1,31 +1,55 @@
-import User from"./User.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import User from './User';
+
 export default function Chat() {
-    return(
-        <>
-        
-        <div className="flex flex-col h-screen">
-            <div className="bg-blue-500 w-full h-12 ">
-                <div className="float-left text-white text-4xl"><b>ChatApp</b></div>
-                <button className="float-right bg-red-700 text-white text-3xl rounded-md mx-2 my-1"> Logout </button>
-            </div>
-            <div className="flex flex-row h-full">
-                <div className="bg-blue-100 w-1/3"> 
-                    <div className="flex gap-2">
-                        <input type="text" placeholder="Search for People" className="bg-white flex-grow border-rounded-sm p-2 mx-2 my-1"/>
-                    </div>
-                    <User/>
-                </div>
-                <div className="flex flex-col bg-blue-300 w-2/3 p-2">
-                    <div className="flex-grow text-center">
-                        Message here
-                    </div>
-                    <div className="flex  gap-2">
-                        <input type="text" placeholder="Type your Message" className="bg-white flex-grow border rounded-md p-2"/>
-                        <button className="bg-blue-500 rounded-md p-2 text-white">send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </>
-    );
+  const [message, setMessage] = useState('');
+
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
+  };
+
+  return (
+    <Container fluid className="h-screen d-flex flex-column">
+      <Row className="bg-black p-1">
+        <Col className="bg-dark-gray text-3xl title-bar">
+          <b>Meta-Chat</b>
+        </Col>
+        <Col className="text-right">
+          <Button variant="danger" className="rounded-md" style={{ fontSize: '1rem', padding: '0.25rem 0.25rem', lineHeight: '1', marginTop: '5px', alignItems: 'center' }}>
+            Logout
+          </Button>
+        </Col>
+      </Row>
+      <Row className="flex-grow-1">
+        <Col xs={12} md={3} className="bg-black">
+          <div className="p-1">
+            <Form.Control
+              type="text"
+              placeholder="Search for People"
+              className="bg-dark text-dark flex-grow border-rounded-sm p-1 mt-1 mb-2"
+            />
+            <User />
+          </div>
+        </Col>
+        <Col xs={12} md={9} className="bg-gray p-2 d-flex flex-column">
+          <div className="flex-grow-1 text-center">Message here</div>
+          <div className="flex gap-2">
+            <Form.Control
+              as="textarea"
+              rows={1}
+              placeholder="Type your Message"
+              className="bg-dark-gray text-light flex-grow border rounded-md p-2 textarea-no-scrollbar resize-none"
+              value={message}
+              onChange={handleMessageChange}
+            />
+            <Button variant="primary" className="rounded-md p-2">
+              Send
+            </Button>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
 }
