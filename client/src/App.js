@@ -1,11 +1,11 @@
 
 // import './App.css';
-
-import Register from "./Register";
+import Chat from "./Chat.js";
+//import Register from "./Register";
 
 function App() {
   return (
-    <Register/>
+    <Chat/>
   );
 }
 
