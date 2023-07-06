@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,12 @@ function Register() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  async function register(){
+    //e.preventDefault();
+    const { username, password } = formData;
+    await axios.post('/register', {username , password});
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +42,7 @@ function Register() {
 
     if (email && password) {
       // Submit the form or perform further actions
-      console.log('Form submitted!');
+      register(email ,password);
     }
   };
 
