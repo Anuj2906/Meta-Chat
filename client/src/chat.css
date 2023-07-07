@@ -8,10 +8,29 @@ textarea.resize-none {
     box-shadow: none !important;
     border-radius: 6px !important;
 }
+ .msg-color {
+  color: rgb(58, 134, 135);
+ }
 
-.logout-button {
-    font-size: 0.5rem; /* Adjust the font size as needed */
-    padding: 0.5rem 0.5rem; /* Adjust the padding to decrease the height */
-    line-height: 0.5; /* Set the line height to 1 to reduce any extra space */
+ .message-container {
+  display: inline-block;
+ 
+  flex-direction: column;
+  padding: 10px;
+  background-color: black;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
+
+/* .message-box {
+  padding: 10px;
+  background-color: ;
+  border-radius: 5px;
+  margin-bottom: 10px;
+} */
+/* 
+.bgg-clr {
+  color: rgb(74, 122, 127);
+ } */
+
   

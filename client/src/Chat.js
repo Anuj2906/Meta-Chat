@@ -1,8 +1,12 @@
+import './chat.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import User from './User';
+import Group from './Group';
 import Inmsg from './Inmsg';
+import Outmsg from './outmsg';
+import NewGroup from './Newgroup';
+import JoinGroup from './Joingroup';
 
 export default function Chat() {
   const [message, setMessage] = useState('');
@@ -20,15 +24,16 @@ export default function Chat() {
     <Container fluid className="h-screen d-flex flex-column">
       <Row className="bg-black p-1">
         <Col>
-          <Button variant="secondary" className="sidebar-toggle" onClick={handleSidebarToggle}>
+          <Button variant="outline-secondary" className="sidebar-toggle my-1" onClick={handleSidebarToggle}>
             Groups
           </Button>
         </Col>
-        <Col className="bg-dark-gray text-3xl title-bar text-center">
+        <Col className="bg-gray text-3xl title-bar text-center text-muted">
           <b>Meta-Chat</b>
         </Col>
         <Col className="text-right">
-          <Button variant="danger" className="rounded-md" style={{ fontSize: '1rem', padding: '0.25rem 0.25rem', lineHeight: '1', marginTop: '5px', alignItems: 'center' }}>
+          
+          <Button variant="outline-danger" className="my-1">
             Logout
           </Button>
         </Col>
@@ -36,22 +41,34 @@ export default function Chat() {
       <Row className="flex-grow-1">
         {isSidebarOpen && (
           <Col xs={12} md={3} className="bg-black">
-            <div className="flex gap-2">
-              <Form.Control
-                type="text"
-                placeholder="Search for People"
-                className="bg-black text-light flex-grow border-rounded-sm p-2 mx-2 my-1"
-              />
+            
+            <Group/>
+            <div className="text-center">
+              <NewGroup/>
+              <JoinGroup/>
             </div>
-            <User />
+            
           </Col>
         )}
         <Col xs={12} md={isSidebarOpen ? 9 : 12} className="bg-gray p-2 d-flex flex-column">
-          <div className="flex-grow-1 text-center">
-            Message here
-            <div className="text-left">
-                <Inmsg/>
+          <div className="flex-grow-1 text-center text-muted">
+            <div>
+               Group Name
             </div>
+            
+            
+              <div className="text-left">
+                <div className="message-container">
+                  <Inmsg />
+                </div>
+              </div>
+              
+              
+              <div className="text-right">
+                <div className="message-container msg-color">
+                  <Outmsg />
+                </div>
+              </div>
             
           </div>
 
@@ -65,7 +82,7 @@ export default function Chat() {
               value={message}
               onChange={handleMessageChange}
             />
-            <Button variant="primary" className="rounded-md p-2">
+            <Button variant="outline-success" className="rounded-md p-2">
               Send
             </Button>
           </div>

@@ -1,7 +1,7 @@
 export default function Inmsg()
 {
     return(
-        <div>
+        <div className="text-muted">
             The Boys
         </div>
     );
