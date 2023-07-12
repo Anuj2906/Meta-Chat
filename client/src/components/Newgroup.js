@@ -11,7 +11,7 @@ function NewGroup() {
 
   return (
     <>
-      <Button variant="outline-warning" className="mx-2" onClick={handleShow}>
+      <Button variant="outline-warning" className="mx-2 my-1" onClick={handleShow}>
         Create Group
       </Button>
       <Modal show={show} onHide={handleClose}>

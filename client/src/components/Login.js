@@ -1,14 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
+import Error from './error';
+
 
 function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const { loginData, loginError, loginUser, isLoginLoading, updateLoginData } = useContext(AuthContext);
 
   const [errors, setErrors] = useState({
     email: '',
@@ -16,18 +15,12 @@ function Login() {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    updateLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
-
-  // async function register(){
-  //   //e.preventDefault();
-  //   const { username, password } = formData;
-  //   await axios.post('/register', {username , password});
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = formData;
+    const { email, password } = loginData;
     const newErrors = {};
 
     if (!email) {
@@ -41,16 +34,14 @@ function Login() {
     setErrors(newErrors);
 
     if (email && password) {
-      // Submit the form or perform further actions
-      // register(email ,password);
-      console.log("form submitted")
+      loginUser();
     }
   };
 
   return (
-    <div className="my-20">
+    <div className="mt-14">
     <h1 className="align-items-center text-center">Meta-Chat</h1>
-    <div className="d-flex justify-content-center align-items-center" style={{ height: '55vh' }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: '58vh' }}>
       
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -59,14 +50,14 @@ function Login() {
             type="email"
             placeholder="Enter email"
             name="email"
-            value={formData.email}
+            value={loginData.email}
             onChange={handleChange}
             isInvalid={!!errors.email}
           />
           <Form.Control.Feedback type="invalid">
             {errors.email}
           </Form.Control.Feedback>
-          <Form.Text className="text-muted">
+          <Form.Text className="text-info">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
@@ -77,7 +68,7 @@ function Login() {
             type="password"
             placeholder="Enter Password"
             name="password"
-            value={formData.password}
+            value={loginData.password}
             onChange={handleChange}
             isInvalid={!!errors.password}
           />
@@ -88,9 +79,13 @@ function Login() {
 
         <div className="d-grid gap-2 col-6 mx-auto mb-0">
           <Button variant="outline-primary" type="submit">
-            Submit
+            {isLoginLoading ? "Logging you in" : "Submit"}
           </Button>
         </div>
+          {
+            // loginError?.error && (<Alert  variant="danger"><p>{loginError?.message}</p></Alert>)
+            loginError?.error && (<Error/>)
+          }
       </Form>
       
     </div>

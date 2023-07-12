@@ -11,7 +11,7 @@ function JoinGroup() {
 
   return (
     <>
-      <Button variant="outline-info" className="mx-2" onClick={handleShow}>
+      <Button variant="outline-info" className="mx-2 my-1" onClick={handleShow}>
         Join Group
       </Button>
       <Modal show={show} onHide={handleClose}>

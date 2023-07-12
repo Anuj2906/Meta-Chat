@@ -2,15 +2,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import axios from 'axios';
+import { useContext } from "react";
+import { AuthContext } from '../context/AuthContext';
+import Error from './error';
+
 
 function Register() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  
+  // const [formData, setFormData] = useState({
+  //   username: '',
+  //   email: '',
+  //   password: ''
+  // });
 
+  const {formData, updateFormData, registerUser, registerError, isRegisterLoading } = useContext(AuthContext);
   const [errors, setErrors] = useState({
     username: '',
     email: '',
@@ -18,14 +23,9 @@ function Register() {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    updateFormData({ ...formData, [e.target.name]: e.target.value});
   };
 
-  // async function register(){
-  //   //e.preventDefault();
-  //   const { username, password } = formData;
-  //   await axios.post('/register', {username , password});
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,20 +47,18 @@ function Register() {
     setErrors(newErrors);
 
     if (email && password && username) {
-      // Submit the form or perform further actions
-      // register(email ,password);
-      console.log("form submitted")
+      registerUser();
     }
   };
 
   return (
     <>
-    <div className="my-20">
-    <h1 className="align-items-center text-center mb-4">Meta-Chat</h1>
+    <div className="mt-3 mb-5">
+      <h1 className="align-items-center text-center">Meta-Chat</h1>
+    </div>
     <br/>
     <br/>
-    <br/>
-    <div className="d-flex justify-content-center align-items-center" style={{ height: '35vh' }}>
+    <div className="d-flex justify-content-center align-items-center mb-12" style={{ height: '45vh' }}>
       
       <Form onSubmit={handleSubmit} className="">
         <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -113,15 +111,21 @@ function Register() {
 
         <div className="d-grid gap-2 col-6 mx-auto mb-3">
           <Button variant="outline-primary" type="submit">
-            Submit
+            {isRegisterLoading ? "Creating your account" : "Submit"}
           </Button>
+            {
+              // registerError?.error && (<Alert variant="danger"><p>{registerError?.message}</p></Alert>)
+              registerError?.error && (<Error/>)
+            }
+          
         </div>
       </Form>
     </div>
     
-    </div>
+    <br/>
+    
     <div className="text-center">Already have an account ? &nbsp;
-    <a href='/login'>Login</a>
+      <a href='/login'>Login</a>
     </div>
     </>
   );

@@ -1,31 +1,30 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-//const { default: mongoose } = require('mongoose');
-//const User =require('./model/User');
-//const jst = require('jsonwebtoken');
-dotenv.config();
-const mongo_uri = process.env.MONGO_URL;
-mongoose.connect(mongo_uri);
-jwtSecret = process.env.JWT_SECRET;
+// const dotenv = require('dotenv');
+const cors = require("cors")
+const userRoute = require("./Routes/userRoute");
 
 const app = express();
+require("dotenv").config();
 
+app.use(express.json());
+app.use(cors());
+app.use("/api/users", userRoute);
 
-app.get('/test',(req,res) => {
-    res.json('test ok')
+app.get("/", (req, res)  =>{
+    res.send("Welcome!");
+})
+
+const port = process.env.PORT || 4040;
+const uri = process.env.MONGO_URL;
+
+app.listen(port, (req, res) => {
+    console.log(`server is running on port...:${port}`)
 });
 
-
-
-// app.post('/register', async(req,res) => {
-//     const {username, password} =req.body;
-//     const createdUser = await  User.create({username,password});
-//     jst.sign({UserId: createdUser, id}, jwtSecret ,(err ,token) => {
-//         if(err) throw err;
-//         res.cookies('token',token).status(201).json('ok');
-//     });
-
-// });
-
-app.listen(4040);
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log("MongoDb connection established"))
+.catch((error)=> console.log("MongoDb connection failed", error.message));

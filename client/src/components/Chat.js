@@ -1,14 +1,16 @@
 import './chat.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Group from './Group';
 import Inmsg from './Inmsg';
 import Outmsg from './outmsg';
 import NewGroup from './Newgroup';
 import JoinGroup from './Joingroup';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Chat() {
+  const { user, logoutUser } = useContext(AuthContext);
   const [message, setMessage] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -32,16 +34,15 @@ export default function Chat() {
           <b>Meta-Chat</b>
         </Col>
         <Col className="text-right">
-          
-          <Button variant="outline-danger" className="my-1">
+          <Button onClick={()=> logoutUser()} to="/login" variant="outline-danger" className="my-1">
             Logout
-          </Button>
+          </Button>          
         </Col>
       </Row>
       <Row className="flex-grow-1">
         {isSidebarOpen && (
           <Col xs={12} md={3} className="bg-black">
-            
+            <div className="text-center">User : {user?.username}</div>
             <Group/>
             <div className="text-center">
               <NewGroup/>
