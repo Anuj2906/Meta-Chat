@@ -1,21 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthContextProvider } from './context/AuthContext';
+import { ChatContextProvider } from './context/chatContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+
     <BrowserRouter>
-      <AuthContextProvider>
-        <App/>
-      </AuthContextProvider>
+      <ChatContextProvider>
+        <AuthContextProvider>
+          <App/>
+        </AuthContextProvider>
+      </ChatContextProvider>
     </BrowserRouter>
-  </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

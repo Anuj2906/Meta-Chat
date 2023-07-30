@@ -16,12 +16,13 @@ function Error() {
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
+        keyboard={true}
+        animation={true}
       >
         <Modal.Header closeButton>
           <Modal.Title className="text-danger">Error !</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className=''>
            <p>{loginError?.message}</p>
            <p>{registerError?.message}</p>
         </Modal.Body>

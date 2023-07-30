@@ -50,18 +50,21 @@ function Register() {
       registerUser();
     }
   };
+  const customStyle = {
+    fontSize: '13px', // Set your desired font size here
+  };
 
   return (
     <>
-    <div className="mt-3 mb-5">
+    <div className="mt-5 mb-4">
       <h1 className="align-items-center text-center">Meta-Chat</h1>
     </div>
     <br/>
     <br/>
-    <div className="d-flex justify-content-center align-items-center mb-12" style={{ height: '45vh' }}>
+    <div className="d-flex justify-content-center align-items-center mb-15" style={{ height: '50vh' }}>
       
       <Form onSubmit={handleSubmit} className="">
-        <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Group className="mb-2" controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
@@ -71,12 +74,12 @@ function Register() {
             onChange={handleChange}
             isInvalid={!!errors.username}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid" style={customStyle}>
             {errors.username}
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-2" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -86,7 +89,7 @@ function Register() {
             onChange={handleChange}
             isInvalid={!!errors.email}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid" style={customStyle}>
             {errors.email}
           </Form.Control.Feedback>
           <Form.Text className="text-muted">
@@ -104,7 +107,7 @@ function Register() {
             onChange={handleChange}
             isInvalid={!!errors.password}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid" style={customStyle}>
             {errors.password}
           </Form.Control.Feedback>
         </Form.Group>
@@ -124,7 +127,7 @@ function Register() {
     
     <br/>
     
-    <div className="text-center">Already have an account ? &nbsp;
+    <div className="text-center mt-3">Already have an account ? &nbsp;
       <a href='/login'>Login</a>
     </div>
     </>

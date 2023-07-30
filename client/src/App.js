@@ -1,17 +1,13 @@
-// import axios from 'axios';
 import { Routes, Route, Navigate } from "react-router-dom";
-// import './App.css';
+
 import Chat from "./components/Chat.js";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { AuthContext } from "./context/AuthContext.js";
 import { useContext } from "react";
-// import { Container } from "react-bootstrap";
 
 function App() {
   const { user } = useContext(AuthContext);
-  // axios.defaults.baseURL = 'http://localhost:4040';
-  // axios.defaults.withCredentials =true;
   return (
     <>
       <Routes>

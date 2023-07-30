@@ -12,13 +12,13 @@ export const AuthContextProvider = ({ children }) => {
         email: "",
         password: ""
     });
-
+ 
     const [loginError, setLoginError] = useState(null);
     const [isLoginLoading, setIsLoginLoading] = useState(false);
     const [loginData, setLoginData] = useState({
       email: "",
       password: ""
-    });
+    }); 
 
     useEffect(()=>{
       const user = localStorage.getItem("User");
