@@ -20,21 +20,25 @@ function ChatNav() {
           <Container fluid>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Brand href="#"><b>Meta Chat</b></Navbar.Brand>
-            <NavDropdown title="Profile" id="basic-nav-dropdown">
-              <Container fluid>
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  <Button onClick={()=> logoutUser()} to="/login" variant="outline-danger" className="my-1">
-                    Logout
-                  </Button>
-                </NavDropdown.Item>
-              </Container>
-            </NavDropdown>
+            
+             <NavDropdown title="User Information" id="basic-nav-dropdown" className='mx-4'>
+             <Container >
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+              <Button onClick={()=> logoutUser()} to="/login" variant="outline-danger" className="my-1" >
+                  Logout
+               </Button>
+              </NavDropdown.Item>
+            </Container>
+          </NavDropdown>
+            
+           
+            
             
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}

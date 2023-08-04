@@ -16,12 +16,14 @@ export default function Chat() {
       <div style={{ width: "100%" }}>
         { user && <ChatNav/> }
         <Container>
+          
           { user && <UserChats/> }
           { user && <ChatArea/>}
+          <h1>{user.username}</h1>
         </Container>
       </div>
       
-      <h1>{user.username}</h1>
+      
     </>
     
   );
