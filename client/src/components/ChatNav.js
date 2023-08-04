@@ -8,6 +8,8 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import Search from './chatComponents/Search';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 function ChatNav() {
   const { logoutUser } = useContext(AuthContext);
@@ -18,9 +20,22 @@ function ChatNav() {
           <Container fluid>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Brand href="#"><b>Meta Chat</b></Navbar.Brand>
-            <Button onClick={()=> logoutUser()} to="/login" variant="outline-danger" className="my-1">
-                Logout
-            </Button>
+            <NavDropdown title="Profile" id="basic-nav-dropdown">
+              <Container fluid>
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  <Button onClick={()=> logoutUser()} to="/login" variant="outline-danger" className="my-1">
+                    Logout
+                  </Button>
+                </NavDropdown.Item>
+              </Container>
+            </NavDropdown>
+            
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
