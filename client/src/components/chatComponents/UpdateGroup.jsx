@@ -163,7 +163,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain }) => {
                     <CloseButton onClick={errortoast3Close} />
                 </Container>
             </Modal>
-            {selectedChat.groupAdmin._id === user._id && <i class="bi bi-box-fill" style={{ fontSize: "1.5rem" }} onClick={handleShow}></i>}
+            {selectedChat.groupAdmin._id === user._id && <i class="bi bi-box-fill" style={{ fontSize: "1.5rem", cursor: "pointer" }} onClick={handleShow}></i>}
             {selectedChat.groupAdmin._id !== user._id && <Button variant="outline-danger btn btn-sm" onClick={() => removeUsr(user)}>Leave</Button>}
             <Modal
                 show={show}

@@ -24,7 +24,7 @@ const ScrollableChat = ({ messages }) => {
         {messages && messages.map((m, i) => (
           <>
             {isDiffSender(messages, m, i, user._id) &&
-              <div className="font-italic mx-2 mt-3" style={{ fontSize: "15px" }}>{m.sender.username}</div>
+              <div className="font-italic mx-2 mt-3" style={{ fontSize: "15px", color: "rgba(255, 218, 106, 0.7)" }}>{m.sender.username}</div>
             }
             <div key={m._id} className={`d-flex justify-content-${m.sender._id === user._id ? "end" : "start"}`}>
 
