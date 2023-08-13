@@ -25,7 +25,6 @@ export const AuthContextProvider = ({ children }) => {
       setUser(JSON.parse(user));
     }, []);
 
-    console.log("loginData", loginData);
 
     const updateFormData = useCallback((info) => {
         setFormData(info); 
@@ -87,4 +86,5 @@ export const AuthContextProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
+
 

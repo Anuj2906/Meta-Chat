@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require("cors")
 const userRoute = require("./Routes/userRoute");
 const chatRoutes = require("./Routes/chatRoutes");
+const msgRoutes = require("./Routes/msgRoutes");
 const { notFound, errorHandler } = require("./middleware/errorHandle");
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/users", userRoute);
 app.use("/api/chat", chatRoutes);
+app.use("/api/msg", msgRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
