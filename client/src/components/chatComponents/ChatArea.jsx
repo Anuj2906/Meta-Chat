@@ -15,7 +15,7 @@ import Lottie from "react-lottie";
 import animationData from "../../animations/animation_llc0aaei.json";
 import animationData2 from "../../animations/animation_llc1lv3o.json"
 
-const ENDPOINT = "http://localhost:4040/";
+const ENDPOINT = "/";
 var socket, selectedChatCompare;
 
 const ChatArea = ({ fetchAgain, setFetchAgain }) => {
