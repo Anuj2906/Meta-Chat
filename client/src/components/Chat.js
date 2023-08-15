@@ -1,7 +1,7 @@
 import './chat.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useContext, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+// import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import { AuthContext } from '../context/AuthContext';
 // import SideBar from './chatComponents/SideBar';
