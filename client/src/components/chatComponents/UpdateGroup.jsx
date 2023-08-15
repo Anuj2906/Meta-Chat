@@ -51,7 +51,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain }) => {
                 },
             };
 
-            const { data } = await axios.put("http://localhost:4040/api/chat/add_member", {
+            const { data } = await axios.put("/api/chat/add_member", {
                 chatId: selectedChat._id,
                 userId: useritem._id,
             }, config);
@@ -74,7 +74,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain }) => {
                 },
             };
 
-            const { data } = await axios.put("http://localhost:4040/api/chat/remove_member",{
+            const { data } = await axios.put("/api/chat/remove_member",{
                 chatId: selectedChat._id,
                 userId: usr._id,
             }, config);
@@ -100,7 +100,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get(`http://localhost:4040/api/users/allusers?search=${searchkey}`, config);
+            const { data } = await axios.get(`/api/users/allusers?search=${searchkey}`, config);
             setLoading(false);
             setSearchResult(data);
 
@@ -120,7 +120,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain }) => {
                 },
             };
 
-            const { data } = await axios.put("http://localhost:4040/api/chat/rename_group", {
+            const { data } = await axios.put("/api/chat/rename_group", {
                 chatId: selectedChat._id,
                 chatName: groupName,
             }, config);

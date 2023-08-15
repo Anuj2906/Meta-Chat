@@ -24,7 +24,7 @@ const UserChats = ({fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get("http://localhost:4040/api/chat/fetch_chats", config);
+      const { data } = await axios.get("/api/chat/fetch_chats", config);
       setChats(data);
       // setSelectedChat(selectedChat);
     } catch (error) {

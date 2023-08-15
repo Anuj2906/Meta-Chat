@@ -45,7 +45,7 @@ const Search = ({ sidebarCloseFun }) => {
         }
       }
       const { data } = await axios.get(`
-      http://localhost:4040/api/users/allusers?search=${search}`, config);
+      /api/users/allusers?search=${search}`, config);
 
       setLoading(false);
       setSearchResult(data);
@@ -66,7 +66,7 @@ const Search = ({ sidebarCloseFun }) => {
         },
       };
 
-      const { data } = await axios.post("http://localhost:4040/api/chat/access_chat", {userId} , config);
+      const { data } = await axios.post("/api/chat/access_chat", {userId} , config);
       // console.log(data);
       if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
 

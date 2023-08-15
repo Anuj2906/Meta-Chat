@@ -62,7 +62,7 @@ const ChatArea = ({ fetchAgain, setFetchAgain }) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `http://localhost:4040/api/msg/${selectedChat._id}`,
+        `/api/msg/${selectedChat._id}`,
         config
       );
       setMessages(data);
@@ -85,7 +85,7 @@ const ChatArea = ({ fetchAgain, setFetchAgain }) => {
           },
         };
         setNewMessage("");
-        const { data } = await axios.post("http://localhost:4040/api/msg/send", {
+        const { data } = await axios.post("/api/msg/send", {
           content: newMessage,
           chatId: selectedChat._id,
         }, config);
