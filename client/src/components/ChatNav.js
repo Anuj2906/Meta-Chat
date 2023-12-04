@@ -76,7 +76,7 @@ function ChatNav() {
                           Logout
                         </Button>
                         <Button variant="outline-primary" onClick={handleClosePopup}>
-                          Band ker bsdk
+                          Close
                         </Button>
                       </center>
                     </Container>
