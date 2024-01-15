@@ -10,3 +10,5 @@ router.route("/allusers").get(protect, allUsers);
 router.get("/getusers", getUsers);
 
 module.exports = router;
+
+

@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
     console.log('connected to socket.io');
 
     socket.on("setup", (userData) => {
-        socket.join(userData._id);
+        if(userData)socket.join(userData._id);
         socket.emit("connected");
     });
 
